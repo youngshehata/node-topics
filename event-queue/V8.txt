@@ -1,0 +1,32 @@
+V8 is Google’s open source high-performance JavaScript and WebAssembly engine, written in C++.
+It is used in Chrome and in Node.js, among others,
+runs on Windows, macOS, and Linux systems,
+V8 can be embedded into any C++ application.
+
+V8 Engine is the responsible for Garbage Collecting, on client (Chrome) and on (Node)
+That also makes V8 responsible for memory heap
+
+V8 Engine automaticly clean memory (GB) using "Mark-and-Sweep Algorithm",
+Mark phase: It marks all objects that are reachable from the root (variables, function calls, etc.),
+Sweep phase: It sweeps through the memory and removes all objects that weren't marked (i.e., those that are no longer in use).
+
+The V8 engine compiles JavaScript into machine code at runtime using Just-In-Time (JIT).
+
+JIT compilation happens while the program is running
+V8 first compiles JavaScript into machine code (native code) on the fly and then executes it directly on the CPU
+This is different from interpreting the code, which means the code is translated and executed one instruction at a time
+without the need for intermediate steps.
+
+There are 2 other options
+
+Interpretation:
+which takes another step where there is an interpreter takes the javascript code and converts it into
+machine code then excutes it , it works like there is middelware between JS code and marchine code 
+and that extra step clearly makes things slower
+
+Ahead-Of-Time Compilation (AOT):
+JavaScript code is compiled into machine code before it is executed (prior to runtime), like C++ or Rust code
+While AOT offers fast execution, it sacrifices flexibility
+because it doesn't have the ability to optimize code based on actual runtime data
+JavaScript is dynamic (it has features like dynamic typing, dynamic object properties, etc.)
+which makes it harder to optimize ahead of time. So, V8 uses JIT instead.
